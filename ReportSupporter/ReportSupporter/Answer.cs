@@ -15,6 +15,10 @@ namespace ReportSupporter
         {
             get
             {
+<<<<<<< HEAD
+=======
+                //return $"$(\"#q{ReportNumber}:{Number}_answer\").val(\"{Text}\");";
+>>>>>>> eb70fd2d62c74d28a5b9f677e52b6673d7c4deb1
                 return $"document.getElementById(\"q{ReportNumber}:{Number}_answer\").value=\"{Text}\";";
             }
         }
