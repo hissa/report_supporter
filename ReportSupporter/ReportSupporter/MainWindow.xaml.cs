@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using Microsoft.Win32;
 using System.ComponentModel;
+//using System.Windows.Forms;
 
 namespace ReportSupporter
 {
@@ -61,6 +62,11 @@ namespace ReportSupporter
                 Supporter.ReportNumber = ((TextBox)sender).Text;
                 Reload();
             }            
+        }
+
+        private void CopyScript_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText(Supporter.Script);
         }
     }
 }

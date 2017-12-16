@@ -15,7 +15,8 @@ namespace ReportSupporter
         {
             get
             {
-                return $"document.getElementById(\"q{ReportNumber}:{Number}_answer\").value=\"{Text}\";";
+                //return $"document.getElementById(\"q{ReportNumber}:{Number}_answer\").value=\"{Text}\";";
+                return $"document.getElementById(\"q\"+rNum+\":{Number}_answer\").value=\"{Text}\";";
             }
         }
 

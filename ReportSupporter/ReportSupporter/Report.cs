@@ -26,6 +26,18 @@ namespace ReportSupporter
             get
             {
                 var script = "";
+                script +=
+$@"var getFirst = ()=>{{
+var inputs = document.getElementsByTagName(""input"");
+for(var i = 0; i < inputs.length; i++){{
+if(/q\d{{6}}:1_answer/.test(inputs[i].id)) return inputs[i];
+}};
+}};
+var getNumber = (first)=>{{
+return /\d{{6}}/.exec(first.id)[0];
+}};
+var rNum = getNumber(getFirst());
+";
                 foreach (var item in Answers)
                 {
                     script += item.Script + "\n";
