@@ -34,7 +34,7 @@ namespace ReportSupporter
             Supporter = new Report();
         }
 
-        private void openFileButton_Click(object sender, RoutedEventArgs e)
+        private async void openFileButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog()
             {
@@ -43,13 +43,14 @@ namespace ReportSupporter
             };
             if((bool)dialog.ShowDialog())
             {
+                var loadTask = Supporter.LoadFile(dialog.FileName);
                 Supporter.ReportNumber = reportNumberTextBox.Text;
-                Supporter.LoadFile(dialog.FileName);
                 pathTextBox.Text = dialog.FileName;
                 var fNameRegex = new Regex(@"[^\\]+$");
                 var fName = fNameRegex.Match(pathTextBox.Text);
                 var noExtension = new Regex(@".csv$").Replace(fName.Value, "");
                 Title = $"Credit Saver - \"{noExtension}\"";
+                await loadTask;
                 Reload();
             }
         }

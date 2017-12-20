@@ -59,21 +59,25 @@ var rNum = getNumber(getFirst());
             }
         }
 
-        public void LoadFile(string path)
+        public async Task LoadFile(string path)
         {
             Answers = new ObservableCollection<Answer>();
-            using (var parser = new TextFieldParser(path, Encoding.UTF8))
+            var task = Task.Run(() =>
             {
-                parser.TextFieldType = FieldType.Delimited;
-                parser.HasFieldsEnclosedInQuotes = false;
-                parser.TrimWhiteSpace = false;
-                parser.SetDelimiters(",");
-                while (!parser.EndOfData)
+                using (var parser = new TextFieldParser(path, Encoding.UTF8))
                 {
-                    string[] row = parser.ReadFields();
-                    Answers.Add(new Answer(int.Parse(row[0]), row[1], ReportNumber));
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.HasFieldsEnclosedInQuotes = false;
+                    parser.TrimWhiteSpace = false;
+                    parser.SetDelimiters(",");
+                    while (!parser.EndOfData)
+                    {
+                        string[] row = parser.ReadFields();
+                        Answers.Add(new Answer(int.Parse(row[0]), row[1], ReportNumber));
+                    }
                 }
-            }
+            });
+            await task;
         }
     }
 }
