@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +30,7 @@ namespace ReportSupporter
         public MainWindow()
         {
             InitializeComponent();
+            Title = "Credit Saver";
             Supporter = new Report();
         }
 
@@ -44,6 +46,10 @@ namespace ReportSupporter
                 Supporter.ReportNumber = reportNumberTextBox.Text;
                 Supporter.LoadFile(dialog.FileName);
                 pathTextBox.Text = dialog.FileName;
+                var fNameRegex = new Regex(@"[^\\]+$");
+                var fName = fNameRegex.Match(pathTextBox.Text);
+                var noExtension = new Regex(@".csv$").Replace(fName.Value, "");
+                Title = $"Credit Saver - \"{noExtension}\"";
                 Reload();
             }
         }
