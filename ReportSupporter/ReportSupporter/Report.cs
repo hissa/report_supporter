@@ -62,17 +62,17 @@ var rNum = getNumber(getFirst());
         public void LoadFile(string path)
         {
             Answers = new ObservableCollection<Answer>();
-            var parser = new TextFieldParser(path, Encoding.UTF8)
+            using (var parser = new TextFieldParser(path, Encoding.UTF8))
             {
-                TextFieldType = FieldType.Delimited,
-                HasFieldsEnclosedInQuotes = false,
-                TrimWhiteSpace = false
-            };
-            parser.SetDelimiters(",");
-            while(!parser.EndOfData)
-            {
-                string[] row = parser.ReadFields();
-                Answers.Add(new Answer(int.Parse(row[0]), row[1], ReportNumber));
+                parser.TextFieldType = FieldType.Delimited;
+                parser.HasFieldsEnclosedInQuotes = false;
+                parser.TrimWhiteSpace = false;
+                parser.SetDelimiters(",");
+                while (!parser.EndOfData)
+                {
+                    string[] row = parser.ReadFields();
+                    Answers.Add(new Answer(int.Parse(row[0]), row[1], ReportNumber));
+                }
             }
         }
     }
