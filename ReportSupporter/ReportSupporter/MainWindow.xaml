@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReportSupporter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="608.755" Width="668.569">
+        Title="Credit Saver" Height="559.755" Width="677.569">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.083,-4.154" Height="558" Width="352"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.083,-4.154" Height="434" Width="352"/>
         <Button x:Name="openFileButton" Content="ファイルを開く" HorizontalAlignment="Left" Margin="367,10,0,0" VerticalAlignment="Top" Width="284" Height="40" Click="openFileButton_Click"/>
         <TextBox x:Name="pathTextBox" HorizontalAlignment="Left" Height="23" Margin="367,55,0,0" TextWrapping="Wrap" Text="パスが表示されます。" VerticalAlignment="Top" Width="284" IsReadOnly="True"/>
-        <TextBox x:Name="reportNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="367,106,0,0" TextWrapping="Wrap" Text="000000" VerticalAlignment="Top" Width="284" TextChanged="reportNumberTextBox_TextChanged"/>
-        <TextBox x:Name="scriptTextBox" HorizontalAlignment="Left" Height="361" Margin="367,134,0,0" TextWrapping="Wrap" Text="Script" VerticalAlignment="Top" Width="283" IsReadOnly="True"/>
-        <Button x:Name="CopyScript" Content="Copy" HorizontalAlignment="Left" Margin="367,500,0,0" VerticalAlignment="Top" Width="283" Height="68" Click="CopyScript_Click"/>
+        <TextBox x:Name="scriptTextBox" HorizontalAlignment="Left" Height="361" Margin="367,83,0,0" TextWrapping="Wrap" Text="Script" VerticalAlignment="Top" Width="283" IsReadOnly="True"/>
+        <Button x:Name="CopyScript" Content="スクリプトをコピー" HorizontalAlignment="Left" Margin="368,450,0,0" VerticalAlignment="Top" Width="283" Height="66" Click="CopyScript_Click"/>
+        <Button x:Name="searchNextFile" Content="次のファイルを検索" HorizontalAlignment="Left" Margin="10,449,0,0" VerticalAlignment="Top" Width="352" Height="67" Click="searchNextFile_Click"/>
 
     </Grid>
 </Window>
